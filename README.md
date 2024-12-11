@@ -1,2 +1,2 @@
-# Testes_size_project
+# MLSP_GFsize_project
 Genome evolution and data analysis for mammals and sexual traits
