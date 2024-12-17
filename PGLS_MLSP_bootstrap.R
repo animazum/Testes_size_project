@@ -97,10 +97,10 @@ PGLS.GF.size <- function(traits, pheno.col.nums, tree, spp.col.num, gene.numbers
     # size of the data frame 
     Sizesample<-as.numeric(round(dim(traits.filtered)[1]*(percentTotalSample/100)))
     # Resample species with replacement
-    resampled_species <- sample(traits[, spp.col.num], replace = TRUE, size = )
-    resampled_species <- sample(traits.filtered[, 1], replace = TRUE)
+    resampled_species <- sample(traits[, spp.col.num], replace = F, size = Sizesample)
+    # resampled_species <- sample(traits.filtered[, 1], replace = F, 60)
     
-    traits_resampled <- traits.filtered[traits.filtered[, 1] %in% resampled_species, , drop = FALSE]
+    # traits_resampled <- traits.filtered[traits.filtered[, 1] %in% resampled_species, , drop = FALSE]
     traits_resampled <- traits[traits[, spp.col.num] %in% resampled_species, , drop = FALSE]
     
     # Drop tips from the tree that are not in the resampled dataset
