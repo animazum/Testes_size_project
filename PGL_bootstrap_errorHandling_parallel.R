@@ -4,6 +4,8 @@ library("dplyr")
 library("ape")
 library("nlme")
 
+rm(list=ls())
+
 PGLS.GF.size.parallel <- function(traits, pheno.col.nums, tree, spp.col.num, gene.numbers, No.variables, where.Save.it,
                                   bootstrap = FALSE, n_bootstrap = 100, Sizesample = NULL, cores = 1) {
   # Initialize logging
@@ -194,6 +196,18 @@ PGLS.GF.size.parallel <- function(traits, pheno.col.nums, tree, spp.col.num, gen
   }
 }
 
+
+print("change always the ulimit of the computer $ulimit -s 21000 !!!!!!!!!!!!")
+
+path1<- getwd()
+
+Nombre.file<-c(paste(path1,"/Datos/traits_albus_61spp.csv", sep = ""))
+traits.filtered<-read.csv(Nombre.file, stringsAsFactors = F)
+tree <-read.tree(paste(path1,"/Datos/tree_albus_61spp.tree", sep = ""))
+
+#*************   IT IS IMPORTANT TO HAVE THE SAME SPP ORDER BETWEEN TRAITS AND GENE NUMBERSS!!!!!!!   ********###
+gene.numbers.filtered <- read.csv(paste(path1,"/Datos/gene_numbers_albus_61spp.csv", sep = ""),header = T, row.names = 1)
+dirSave <- getwd()
 
 result <- PGLS.GF.size.parallel(
   traits = traits.filtered,
