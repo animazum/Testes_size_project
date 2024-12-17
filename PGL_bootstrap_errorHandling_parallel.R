@@ -207,7 +207,7 @@ tree <-read.tree(paste(path1,"/Datos/tree_albus_61spp.tree", sep = ""))
 
 #*************   IT IS IMPORTANT TO HAVE THE SAME SPP ORDER BETWEEN TRAITS AND GENE NUMBERSS!!!!!!!   ********###
 gene.numbers.filtered <- read.csv(paste(path1,"/Datos/gene_numbers_albus_61spp.csv", sep = ""),header = T, row.names = 1)
-dirSave <- getwd()
+dirSave <- paste(getwd(), "/Results_bootstrap", sep = "")
 
 result <- PGLS.GF.size.parallel(
   traits = traits.filtered,
